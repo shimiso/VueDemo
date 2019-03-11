@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .bg{
+        background: red;
+    }
+</style>
+<body>
+
+<div id="app">
+
+    <button @click="show">按钮</button>
+
+    <div v-show="bool">我是div</div>
+
+</div>
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            bool:true
+        },
+        methods:{
+            show:function(){
+               if(this.bool){
+                   this.bool=false;
+               }else{
+                   this.bool=true;
+               }
+            }
+        }
+    })
+
+</script>
+
+</body>
+</html>

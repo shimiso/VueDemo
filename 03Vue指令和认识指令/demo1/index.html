@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <p v-if="arr.length==0">暂无数据...</p>
+    <p v-else>{{arr}}</p>
+
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+new Vue({
+    el:"#app",
+    data:{
+        arr:[2,2],
+        str:"你好vue",
+        ok:true
+    }
+});
+</script>
+</body>
+</html>

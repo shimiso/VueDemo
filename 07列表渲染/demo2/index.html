@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <ul>
+        <li v-for="(item,index) in json">
+
+            {{item}}-==>{{index}}
+
+        </li>
+    </ul>
+
+
+</div>
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+           json:{
+
+               userName:"张三",
+               userAge:18
+
+           }
+        }
+    })
+
+</script>
+
+</body>
+</html>

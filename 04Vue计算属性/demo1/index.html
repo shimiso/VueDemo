@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{message}}</p>
+    <p>{{fullName }}</p>
+    <!--模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的
+    对于任何复杂逻辑，你都应当使用计算属性-->
+    <p>{{ message.split('').reverse().join('') }}</p>
+    <p>{{reversedMessage}}</p>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "这是一个message",
+            firstName: 'Foo',
+            lastName: 'Bar'
+        },
+        computed: {//解决(计算属性)[computed]
+            reversedMessage: function () {
+                // 要把reversedMessage看做一个属性
+                return this.message.split('').reverse().join('')
+            },
+            fullName: {
+                // getter
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                },
+                // setter
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
+    })
+    console.log(vm.message);
+    console.log(vm.reversedMessage);
+    vm.fullName = 'John Doe';
+</script>
+
+</body>
+</html>

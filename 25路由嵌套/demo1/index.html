@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li><router-link to="/home">首页</router-link></li>
+        <li><router-link to="/list">列表</router-link></li>
+    </ul>
+    <div>
+        <router-view></router-view>
+    </div>
+</div>
+
+<script src="bower_components/vue/dist/vue.js"></script>
+<script src="bower_components/vue-router/dist/vue-router.js"></script>
+<script>
+    //1>定义组件
+    var HomeView = {
+        data:function(){
+            return {
+                home:"这是首页"
+            }
+        },
+        template:"<h1>{{home}}</h1>"
+    };
+
+    var List1View = {
+        template:"<h1>这是列表111111111111111111</h1>"
+    };
+    var List2View = {
+        template:"<h1>这是列表22222222222222222</h1>"
+    };
+
+    var ListView = {
+        data:function(){
+            return {
+                list:"这是列表"
+            }
+        },
+        template:`
+            <div>
+                <ul>
+                    <li><router-link to="/list/list1">列表1</router-link></li>
+                    <li><router-link to="/list/list2">列表2</router-link></li>
+                </ul>
+                <div>
+                    <router-view></router-view>
+                </div>
+            </div>
+        `
+    };
+
+    //2》配置路由
+
+    var routes = [
+
+        {path:"/home",component:HomeView},
+        {
+            path:"/list",
+            component:ListView,
+            children:[
+                {"path":"/list/list1",component:List1View},
+                {"path":"/list/list2",component:List2View}
+            ]
+
+        },
+        {path:"*",redirect:"/home"}
+    ];
+
+    //3>实例化
+
+    var router = new VueRouter({
+        routes
+    });
+
+    new Vue({
+        router,
+        el:"#app"
+
+    })
+</script>
+
+</body>
+</html>

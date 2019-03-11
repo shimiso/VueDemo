@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <input type="button" value="按钮" @click="run">
+
+
+</div>
+
+<script src="vue.js"></script>
+<script src="bower_components/vue-resource/dist/vue-resource.js"></script>
+
+<script>
+
+    new Vue({
+
+       el:"#app",
+       methods:{
+
+           run:function(){
+
+               /*this.$http.get("index.php?act=1&userName=zhangsan").then(function(res){
+
+                   console.log(res.data);
+
+               },function(err){
+
+                   console.log(err);
+
+               })*/
+
+
+               /*this.$http.get("index.php",{
+
+                   params:{
+                       act:1,
+                       userName:"张三"
+                   }
+
+               }).then(function(res){
+
+                   console.log(res.data);
+
+               },function(err){
+
+                   console.log(err);
+
+               })*/
+
+               this.$http.post("index.php",
+                   {
+                       act:1,
+                       userName:"张三"
+                   },
+                   {emulateJSON:true}
+                ).then(function(res){
+
+                    console.log(res.data);
+
+                },function(err){
+
+                    console.log(err);
+
+                })
+
+
+
+           }
+       }
+
+    })
+</script>
+</body>
+</html>

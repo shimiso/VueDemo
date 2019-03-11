@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div>
+        <router-view></router-view>
+    </div>
+
+    <ul>
+        <li><router-link to="/user/zhangsan">张三</router-link></li>
+        <li><router-link to="/user/lisi">李四</router-link></li>
+    </ul>
+
+
+</div>
+
+<script src="bower_components/vue/dist/vue.js"></script>
+<script src="bower_components/vue-router/dist/vue-router.js"></script>
+
+
+<script>
+    //1》定义组件
+    var userView ={
+        template:"<h1>{{ $route.params.id }}</h1>"
+    };
+
+    //2》配置路由
+    var routes = [
+        {"path":"/user/:id",component:userView}
+    ];
+    //3》实例化VueRouter
+    var router = new VueRouter({
+        routes
+    });
+
+    //4》挂载
+    new Vue({
+        router,
+        el:"#app"
+
+    })
+</script>
+
+</body>
+</html>

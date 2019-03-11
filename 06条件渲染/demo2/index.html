@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .bg{
+        background: red;
+    }
+</style>
+<body>
+
+<div id="app">
+
+    <div v-if="arr.length!=0">有数据</div>
+    <div v-else>无数据</div>
+
+    <div v-show="bool">1111111</div>
+
+</div>
+<script src="vue.js"></script>
+<script>
+
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            arr:[1,2],
+            bool:false
+        }
+    })
+
+</script>
+
+</body>
+</html>

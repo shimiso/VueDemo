@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+
+    <h1 v-date>1497850393253</h1>
+
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+
+    new Vue({
+        el:"#app",
+        directives:{
+
+            "date":function(el,binding){
+
+               var str =  el.innerText.replace(/\s/g,"");
+               var date = new Date(parseInt(str));
+
+                el.innerText =  date.getFullYear()+"-"+ (date.getMonth()+1)+"-"+date.getDate()
+
+            }
+
+        }
+
+    })
+
+</script>
+</body>
+</html>

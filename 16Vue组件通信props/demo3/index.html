@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    {{message}}
+
+    <com :msg="message"></com>
+
+    <show :msg="message"></show>
+
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({ //父组件
+        el:"#app",
+        data:{
+            message:"这是父组件"
+        },
+        components:{
+            com:{  //子组件
+                data:function(){
+                    return {
+                        str:123
+                    }
+                },
+                props:["msg"],
+                template:"<h1 @click='run'>==={{msg}}===</h1>",
+                methods:{
+                    run:function(){
+                       this.msg = "你好我改变数据"
+                    }
+                }
+            },
+            show:{
+                props:["msg"],
+                template:"<h1>{{msg}}==>{{str}}</h1>",
+            }
+        }
+
+    })
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #box{
+        width:300px;
+        height:300px;
+        background: red;
+    }
+    /* 可以设置不同的进入和离开动画 */
+    /* 设置持续时间和动画函数 */
+    .fade-leave-active, .fade-enter-active{
+        transition: 1s all;
+    }
+    .fade-leave-to, .fade-enter{
+        opacity: 0;
+    }
+
+</style>
+<body>
+
+<div id="app">
+
+    <button @click="show=!show">按钮</button>
+
+
+    <transition name="fade">
+          <div id="box" v-show="show"></div>
+    </transition>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            show:true
+        }
+
+    })
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <!--可以用 v-on 指令添加一个事件监听器，通过它调用在 Vue 实例中定义的方法 @click-->
+    <button v-on:click="run()">点击我</button>
+
+    <p>{{ message }}</p>
+    <input v-model="message">
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+new Vue({
+    el:"#app",
+    data:{  //数据
+        h:"c.html",
+        message: '双向绑定'
+    },
+    methods:{ //方法
+
+        run:function(){
+
+            alert(1);
+        },
+        k:function(){
+            /*var e = window.event||e;
+            console.log(e.keyCode);
+            if(e.keyCode==37){
+                console.log(2);
+            }*/
+            console.log(3333);
+        }
+
+    }
+});
+</script>
+</body>
+</html>

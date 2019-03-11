@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <p>{{obj.str}}</p>
+
+    <child :msg="obj"></child>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            obj:{
+                str:"这是根组件数据"
+            }
+        },
+        components:{
+            child:{
+                props:['msg'],
+                template:"<h1 @click='run'>这是子组件===>{{msg.str}}</h1>",
+                methods:{
+
+                    run:function(){
+                        this.msg.str = 456;
+                    }
+
+                }
+            }
+        }
+
+
+
+    })
+</script>
+
+
+</body>
+</html>

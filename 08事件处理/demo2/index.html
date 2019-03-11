@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <button @click="run(5)">按钮</button>
+    {{message}}
+
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+
+        el:"#app",
+        data:{
+
+            message:0
+
+        },
+        methods:{
+
+            run:function(num){
+
+                this.message+=num;
+            }
+
+        }
+
+    })
+</script>
+</body>
+</html>

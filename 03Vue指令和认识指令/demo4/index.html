@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--事件修饰符
+    once点击事件将只会触发一次
+    prevent提交事件不再重载页面-->
+    <a :href="h" v-on:click.prevent.once="show">111111</a>
+    <!-- 缩写语法  -->
+    <!--按键修饰符
+    .enter
+    .tab
+    .delete (捕获“删除”和“退格”键)
+    .esc
+    .space
+    .up
+    .down
+    .left
+    .right
+    -->
+    <input @keyup.enter="show">
+</div>
+
+<script src="vue.js"></script>
+<script>
+new Vue({
+    el:"#app",
+    data:{
+
+        h:"a.html"
+
+    },
+    methods:{
+        show:function(){
+            alert(1);
+        }
+    }
+
+});
+</script>
+</body>
+</html>

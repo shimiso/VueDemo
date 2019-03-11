@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .bg{
+        background: red;
+    }
+</style>
+<body>
+
+<div id="app">
+
+    <!--<div v-if="arr.length==0">111111</div>
+    <div v-else>222222</div>-->
+
+
+    <h1 v-if="arr.length==1">1111111</h1>
+    <h1 v-else-if="arr.length==2">2222222</h1>
+    <h1 v-else>33333333</h1>
+</div>
+<script src="vue.js"></script>
+<script>
+
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            arr:[1,2]
+        }
+    })
+
+</script>
+
+</body>
+</html>

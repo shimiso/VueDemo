@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- v-on:keyup="run" 也可以写成 @keyup="run" -->
+    <input type="text" @keyup="run">
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+
+        el:"#app",
+        data:{
+
+            message:0
+
+        },
+        methods:{
+
+            run:function(e){
+
+                var e = window.event||e;
+                if(e.keyCode==37)console.log(1);
+
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

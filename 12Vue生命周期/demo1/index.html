@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <button @click="run">按钮</button>
+
+    {{message}}
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            message:123
+        },
+        methods:{
+
+            run:function(){
+
+                this.message = "改变了";
+
+            }
+        },
+        beforeCreate:function(){
+
+            console.log("new Vue创建之前");
+        },
+        created:function(){
+            console.log("new Vue创建之后");
+        },
+        beforeMount:function(){
+            console.log("有el");
+        },
+        mounted:function(){
+            console.log("之后");
+        },
+        beforeUpdate:function(){
+            console.log("改变之前");
+        },
+        updated:function(){
+            console.log("改变之后");
+        },
+        beforeDestroy:function(){
+            console.log("销毁之前");
+        },
+        bestroyed:function(){
+            console.log("销毁之后");
+        }
+
+    })
+</script>
+</body>
+</html>

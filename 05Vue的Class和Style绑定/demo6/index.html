@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .bg{
+        background: red;
+    }
+    .fz{
+        font-size:50px;
+    }
+</style>
+<body>
+
+<div id="app">
+
+    <h1 :style="styleObject">我是一个标题</h1>
+
+    <h1 :style="[aaa,bbb]">我是一个标题</h1>
+
+</div>
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            styleObject:{
+                color: 'red',
+                fontSize: '13px'
+            },
+            aaa:{background:"red"},
+            bbb:{color:"#fff"}
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

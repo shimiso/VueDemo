@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <a href="a.html" @click.prevent.stop="run">跳转到a.html页面上了</a>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    Vue.config.keyCodes.f1 = 112;
+
+    new Vue({
+
+        el:"#app",
+        data:{
+
+            message:0
+
+        },
+        methods:{
+
+            run:function(){
+
+              alert(1);
+
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <aaa></aaa>
+    <bbb></bbb>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        components:{
+            aaa:{
+                data:function(){
+                    return{
+                        str1:"a数据"
+                    }
+                },
+                template:"<h1 @click='run'>这是A子组件==>{{str1}}</h1>",
+                methods:{
+                    run:function(){
+                        Vm.$emit("show",this.str1);
+                    }
+                }
+            },
+            bbb:{
+                data:function(){
+                  return{
+                      b:""
+                  }
+
+                },
+                template:"<h1>这是B子组件===:>{{this.b}}</h1>",
+                mounted:function(){
+                    var _this = this;
+                    Vm.$on("show",function(data){
+                        _this.b = data;
+                    })
+                }
+            }
+        }
+
+
+
+    })
+</script>
+
+
+</body>
+</html>

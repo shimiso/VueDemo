@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <h1 v-color>11111111111111</h1>
+    <h2 v-date>456</h2>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+
+    new Vue({
+        el:"#app",
+        directives:{
+
+            "color":function(el,binding){
+
+                el.style.color = "red"
+
+            },
+            "date":function(el,binding){
+
+                el.innerHTML = "123"
+
+            }
+
+        }
+
+    })
+
+</script>
+</body>
+</html>

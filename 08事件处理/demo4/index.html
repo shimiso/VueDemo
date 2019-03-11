@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <input type="text" @keyup.65="run">
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    Vue.config.keyCodes.f1 = 112;
+
+    new Vue({
+
+        el:"#app",
+        data:{
+
+            message:0
+
+        },
+        methods:{
+
+            run:function(){
+
+                console.log(1);
+
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

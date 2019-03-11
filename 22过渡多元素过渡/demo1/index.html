@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="bower_components/animate.css/animate.css">
+<style>
+    #box{
+        width:200px;
+        height:200px;
+        background: red;
+    }
+</style>
+<body>
+
+<div id="app">
+
+    <button @click="show=!show">按钮</button>
+
+    <transition-group
+            enter-active-class="animated zoomInLeft"
+            leave-active-class="animated zoomOutRight">
+          <div id="box" v-show="show" :key="0"></div>
+          <div id="box" style="margin-top: 10px" v-show="show" :key="1"></div>
+    </transition-group>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            show:true
+        }
+
+    })
+</script>
+
+
+</body>
+</html>

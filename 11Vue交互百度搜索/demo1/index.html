@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .bg{
+        background: #ccc;
+    }
+</style>
+<body>
+
+<div id="app">
+
+    <input type="text" @keyup="run" v-model="str" @keydown.down="down" @keydown.up="up" placeholder="请输入您要搜索的关键词">
+
+    <ul>
+        <li v-for="(item,index) in arr" :class="{bg:index==num}">{{item}}</li>
+    </ul>
+    <p v-show="arr.length==0">暂无数据...</p>
+</div>
+
+<script src="bower_components/vue/dist/vue.js"></script>
+<!--引入vue-resource后，可以基于全局的Vue对象使用http，也可以基于某个Vue实例使用http-->
+<script src="bower_components/vue-resource/dist/vue-resource.js"></script>
+
+<script>
+new Vue({
+
+    el:"#app",
+    data:{
+        arr:[],
+        str:"",
+        num:-1
+    },
+    methods:{
+        down:function(){
+
+            this.num++;
+            if(this.num>this.arr.length-1){this.num=0}
+
+            this.str = this.arr[this.num];
+        },
+        up:function(){
+
+            this.num--;
+            if(this.num<0){this.num=this.arr.length-1}
+            this.str = this.arr[this.num];
+        },
+        run:function(e){
+            var e = window.event || e;
+            if(e.keyCode == 38 || e.keyCode==40)return false;
+
+            this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+
+                params:{
+                    wd:this.str
+                },
+                jsonp:"cb"//向跨域服务器发送jsonp的参数key
+
+            }).then(function(res){
+
+                this.arr = res.data.s;
+
+            })
+
+        }
+
+    }
+    
+
+})
+
+</script>
+
+</body>
+</html>

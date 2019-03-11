@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+
+    <input type="text" @keyup="run" v-model="str">
+
+    <ul>
+        <li v-for="item in arr">{{item}}</li>
+    </ul>
+
+</div>
+
+
+<script src="vue.js"></script>
+<script src="bower_components/vue-resource/dist/vue-resource.js"></script>
+
+<script>
+
+    new Vue({
+
+       el:"#app",
+       data:{
+           str:"",
+           arr:[]
+       },
+       methods:{
+
+           run:function(){
+
+               this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+
+                   params:{
+                       wd:this.str
+                   },
+                   jsonp:"cb"
+
+               }).then(function(res){
+
+                   this.arr = res.data.s;
+
+               })
+
+           }
+       }
+
+    })
+</script>
+</body>
+</html>

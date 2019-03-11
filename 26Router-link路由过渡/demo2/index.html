@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css">
+</head>
+<style>
+    h1{
+        position: absolute;
+        left:0px;
+        top:100px;
+    }
+</style>
+<body>
+
+<div id="app">
+
+
+    <ul>
+        <li><router-link to="/home" tag="p">首页</router-link></li>
+        <li><router-link to="/list" tag="div">列表</router-link></li>
+    </ul>
+
+
+    <transition
+        enter-active-class="animated bounceInLeft"
+        leave-active-class="animated bounceOutRight"
+    >
+
+        <router-view></router-view>
+
+    </transition>
+
+</div>
+
+<script src="bower_components/vue/dist/vue.js"></script>
+<script src="bower_components/vue-router/dist/vue-router.js"></script>
+
+
+<script>
+    //1>定义组件
+    var HomeView = {
+        data:function(){
+            return {
+                home:"这是首页"
+            }
+        },
+        template:"<h1>{{home}}</h1>"
+    };
+
+
+
+    var ListView = {
+        data: function () {
+            return {
+                list: "这是列表"
+            }
+        },
+        template: "<h1>{{list}}</h1>"
+    }
+    //2》配置路由
+
+    var routes = [
+        {path:"/home",component:HomeView},
+        {path:"/list",component:ListView},
+        {path:"*",redirect:"/home"}
+    ];
+
+    //3>实例化
+
+    var router = new VueRouter({
+        routes
+    });
+
+    new Vue({
+        router,
+        el:"#app"
+
+    })
+</script>
+
+</body>
+</html>

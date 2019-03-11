@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #box{
+        width:300px;
+        height:300px;
+        background: red;
+    }
+    .fade-enter-active, .fade-leave-active{
+
+        transition: 1s all;
+
+    }
+
+    .fade-enter, .fade-leave-to{
+        opacity: 0;
+    }
+
+</style>
+<body>
+<div id="app">
+
+    <button @click="show=!show">按钮</button>
+    <transition name="fade"
+
+               @before-enter="beforeEnter"
+               @enter="enter"
+               @after-enter="afterEnter"
+               @enter-cancelled="enterCancelled"
+
+
+    >
+        <div id="box" v-show="show"></div>
+    </transition>
+
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            show:true
+        },
+        methods:{
+            beforeEnter:function(el){
+                console.log("进入之前");
+                el.style.background = "pink"
+            },
+            enter:function(el){
+                el.innerHTML = "1111111111111"
+                console.log("进入");
+            },
+            afterEnter:function(el){
+               el.style.background = "blue"
+                console.log("进入之后")
+            },
+            enterCancelled:function(){
+                console.log("进入之后注销")
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

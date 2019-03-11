@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <input type="text" v-model="val"><button @click="run">按钮</button>
+
+    <ul>
+        <li v-for="item in arr">
+            {{item}}
+        </li>
+    </ul>
+
+</div>
+
+<script src="vue.js"></script>
+<script src="vue-resource.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            val:"",
+            arr:[]
+        },
+        mounted:function(){  //window.onload
+
+              this.run();
+        },
+        methods:{
+
+            run:function(){
+
+
+                this.$http.get("index.php",{
+
+                    params:{
+
+                        userName:this.val
+                    }
+
+                }).then(function(res){
+
+
+                    this.arr.push(res.data)
+
+                })
+
+
+            }
+
+        }
+
+
+    })
+</script>
+</body>
+</html>

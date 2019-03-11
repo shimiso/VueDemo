@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <com></com>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    new Vue({ //父组件
+        el:"#app",
+        components:{
+            com:{  //子组件
+                data:function(){
+                    return{
+                        str:"子组件数据"
+                    }
+                },
+                template:"<h1>{{str}}</h1>"
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

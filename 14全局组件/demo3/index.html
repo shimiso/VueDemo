@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <zhangsan></zhangsan>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    var tpl = {
+        data:function(){
+            return{
+                str:"===这是数据了==="
+            }
+        },
+        template:"<div @click='run'>这是一个组件{{str}}</div>",
+        methods:{
+            run:function(){
+
+                alert(1);
+            }
+
+        }
+    };
+    Vue.component("zhangsan",tpl);
+
+    new Vue({
+        el:"#app",
+        data:{
+
+        }
+    })
+</script>
+
+
+</body>
+</html>

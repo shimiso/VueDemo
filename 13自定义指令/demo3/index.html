@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+
+    <h1 v-txt>
+        1,
+        2,
+        3,
+        4,
+        5,
+        10,
+        12,
+        06
+    </h1>
+
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+
+    new Vue({
+        el:"#app",
+        directives:{
+
+            "txt":function(el,binding){
+
+                var str = el.innerText.replace(/\s/g,"");
+
+                var arr =str.split(",");
+
+                for(var i=0;i<arr.length;i++){
+
+                    if(arr[i]<10 && arr[i][0]!=0){
+
+                        arr[i]="0"+arr[i];
+
+                    }
+
+                }
+                var str1 = arr.join(",");
+                el.innerText = str1;
+            }
+
+        }
+
+    })
+
+</script>
+</body>
+</html>

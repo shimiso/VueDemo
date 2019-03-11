@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <h1 v-color="pink">11111111111111</h1>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    Vue.directive("color",function(el,binding){
+        console.log(el);
+        console.log(binding);
+
+        el.style[binding.name] = binding.expression;
+
+    });
+    new Vue({
+        el:"#app",
+        data:{
+            pink:"123"
+        }
+
+
+    })
+</script>
+</body>
+</html>

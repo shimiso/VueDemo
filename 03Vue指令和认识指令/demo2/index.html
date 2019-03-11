@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--vue指令之v-show的用法-->
+    <p v-show="ok">v-show可以控制元素的显隐状态，点击下面的按钮可看到效果。</p>
+    <button v-show="power == 1" @click="Toggle" >Toggle</button>
+    <p>ok：{{ok}}</p>
+
+    <a :href="h">1111111111</a>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            h: "c.html",
+            ok:true,
+            power:1
+        },
+        methods: {
+            Toggle: function () {
+                this.ok = !this.ok;
+            }
+        }
+
+    });
+</script>
+</body>
+</html>

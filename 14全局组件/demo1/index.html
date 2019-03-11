@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <zhangsan></zhangsan>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+    Vue.component("zhangsan",{
+
+        template:"<h1>这是一个全局组件</h1>"
+
+    });
+    new Vue({
+        el:"#app"
+    })
+</script>
+
+
+</body>
+</html>

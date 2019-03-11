@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html style="font-size:16px;" lang="en" xmlns:v-bind="" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+
+<div id="app">
+    <div style="font-size:1rem;">
+        {{parent}}
+    </div>
+    <com v-bind:message="parent"></com>
+    <!--将style属性动态的绑定起来，一旦数据传入可以及时更新-->
+    <div v-bind:style="{ fontSize: postFontSize + 'rem' }">
+        <!--监听enlarge-text事件，触发则执-->
+        <blog-post
+                v-on:enlarge-text="onEnlargeText"
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"></blog-post>
+    </div>
+</div>
+
+<template id="dv1">
+    <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <!--添加点击事件，并且将此事件返回给父组件的enlarge-text事件
+        1、父组件可以使用 props 把数据传给子组件。
+        2、子组件可以使用 $emit 触发父组件的自定义事件。-->
+        <button v-on:click="$emit('enlarge-text', 0.01)">
+            Enlarge text
+        </button>
+        <div v-html="post.content"></div>
+    </div>
+</template>
+
+<script src="vue.js"></script>
+<script>
+    Vue.component('blog-post', {
+        props: ['post'],
+        template: '#dv1'
+    })
+    new Vue({ //父组件
+        el:"#app",
+        data:{
+            parent:"这是父组件",
+            posts: [
+                { id: 1, title: '标题1',content:'<a href="#">My journey with Vue</a>',comments:'comments1'},
+                { id: 2, title: '标题2',content:'<a href="#">Blogging with Vue</a>',comments:'comments2' },
+                { id: 3, title: '标题3',content:'<a href="#">Why Vue is so fun</a>',comments:'comments3' }
+            ],
+            postFontSize: 1
+        },
+        methods: {
+            onEnlargeText: function (enlargeAmount) {
+                this.postFontSize += enlargeAmount
+            }
+        },
+        components:{
+            com:{  //通过 Prop 向子组件传递数据
+                props:['message'],
+                //data 选项必须是一个函数，确保每个实例可以维护一份被返回对象的独立的拷贝
+                data:function(){
+                    return{
+                        str:'子组件数据'
+                    }
+                },
+                template:"<p style=\"font-size:2rem;\">{{str}}===>{{message}}</p>"
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>

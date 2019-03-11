@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="dv1">
+    <!--指令是vue自定义的以v-开头的自定义属性-->
+    <p v-html="html"></p>
+    {{html}}
+    <!--<h1 v-html="不需要加入{{}}">-->
+    <p v-text="html"></p>
+
+    <h1 v-text="'今天是'+year+'年'+month+'月'"></h1>
+
+    <h1>{{ message.concat('!!!') }}</h1>
+
+    <h1>{{ message? 'has message' : 'no message' }}</h1>
+
+    <p>姓名 : {{ person.name }}</p>
+    <p>性别 : {{ person.sex }}</p>
+    <p>年龄 : {{ person.age }}</p>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "div", //el===>vue的作用范围
+        data: {    //data ===>数据
+            html: "<h1>我是标题</h1>",
+            year: new Date().getFullYear(),
+            month: new Date().getMonth() + 1,
+            message : 'hello',
+            person : {
+                name : '小明',
+                sex : '男',
+                age : 8
+            }
+        }
+    })
+</script>
+</body>
+</html>

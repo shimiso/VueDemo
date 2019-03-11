@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <button @click="message++">按钮</button>
+    {{message}}
+
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+
+        el:"#app",
+        data:{
+
+            message:0
+
+        }
+
+    })
+</script>
+</body>
+</html>
